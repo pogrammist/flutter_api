@@ -4,11 +4,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'storage_product.dart';
 
-// This class is the concrete implementation of [StorageService]. Internally
-// it uses shared preferences to save and retrieve data, but that is an
-// implementation detail that no other class in the app knows about. Swapping
-// out shared preferences with a SQL database would be as simple as creating
-// a new [StorageService] implementation.
 class StorageProductImpl implements StorageProduct {
   static const sharedPrefProductKey = 'product_key';
   static const sharedPrefLastCacheTimeKey = 'cache_time_key';

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_api/logic/view_models/viewmodel_products.dart';
+import 'package:flutter_api/logic/view_models/viewmodel_product.dart';
 import 'package:provider/provider.dart';
 
-class ProductsScreen extends StatefulWidget {
+class ProductScreen extends StatefulWidget {
   @override
-  _ProductsScreenState createState() => _ProductsScreenState();
+  _ProductScreenState createState() => _ProductScreenState();
 }
 
-class _ProductsScreenState extends State<ProductsScreen> {
-  ProductsViewModel model = ProductsViewModel();
+class _ProductScreenState extends State<ProductScreen> {
+  ProductViewModel model = ProductViewModel();
 
   @override
   void initState() {
@@ -24,10 +24,10 @@ class _ProductsScreenState extends State<ProductsScreen> {
     );
   }
 
-  Widget buildListView(ProductsViewModel model) {
-    return ChangeNotifierProvider<ProductsViewModel>(
+  Widget buildListView(ProductViewModel model) {
+    return ChangeNotifierProvider<ProductViewModel>(
       create: (context) => model,
-      child: Consumer<ProductsViewModel>(
+      child: Consumer<ProductViewModel>(
         builder: (context, model, child) => ListView.builder(
           itemCount: model.products.length,
           itemBuilder: (context, index) {

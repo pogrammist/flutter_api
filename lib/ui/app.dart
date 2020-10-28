@@ -1,38 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_api/logic/view_models/viewmodel_tokens.dart';
+import 'package:flutter_api/logic/view_models/viewmodel_token.dart';
 import 'package:flutter_api/ui/screens/login.dart';
 import 'package:flutter_api/ui/screens/products.dart';
 import 'package:provider/provider.dart';
 
 import 'common/theme.dart';
 
-class MyApp extends StatefulWidget {
+class App extends StatefulWidget {
   @override
-  _MyAppState createState() => _MyAppState();
+  _AppState createState() => _AppState();
 }
 
-class _MyAppState extends State<MyApp> {
-  TokensViewModel model = TokensViewModel();
+class _AppState extends State<App> {
+  TokenViewModel model = TokenViewModel();
 
   @override
   void initState() {
-    model.loadTokens();
+    // model.removeTokens();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<TokensViewModel>(
+    return ChangeNotifierProvider<TokenViewModel>(
       create: (context) => model,
-      child: Consumer<TokensViewModel>(
+      child: Consumer<TokenViewModel>(
         builder: (context, model, child) => MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Api',
           theme: appTheme,
-          home: (model.tokens != null) ? ProductsScreen() : LoginScreen(),
+          home: LoginScreen(),
           // initialRoute: '/',
           // routes: {
-          //   '/': (context) => Login(),
+          //   '/': (context) => LoginScreen(),
           //   '/products': (context) => ProductsScreen(),
           // },
         ),

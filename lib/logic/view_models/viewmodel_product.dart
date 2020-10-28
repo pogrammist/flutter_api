@@ -1,9 +1,9 @@
 import 'package:flutter_api/logic/models/product.dart';
-import 'package:flutter_api/services/api/api_products_implementation.dart';
+import 'package:flutter_api/services/api/api_product_implementation.dart';
 import 'package:flutter/foundation.dart';
 
-class ProductsViewModel extends ChangeNotifier {
-  final ApiProductsImpl _apiProductImpl = ApiProductsImpl();
+class ProductViewModel extends ChangeNotifier {
+  final ApiProductImpl _apiProductImpl = ApiProductImpl();
   List<Product> _products = [];
 
   List<Product> get products => _products;

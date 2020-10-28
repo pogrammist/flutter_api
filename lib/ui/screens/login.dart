@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-
-import 'package:flutter_api/logic/models/token.dart';
+import 'package:flutter_api/logic/view_models/viewmodel_token.dart';
+import 'package:flutter_api/ui/screens/products.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -10,6 +8,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final TokenViewModel model = TokenViewModel();
   final _userNameTextController = TextEditingController();
   final _passwordTextController = TextEditingController();
 
@@ -92,51 +91,39 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void _showProductsScreen() {
+  void _showProductsScreen() async {
     // Navigator.of(context).pushNamed('/products');
     // Navigator.pushReplacementNamed(context, '/products');
-    _fetchTokens(_userNameTextController.text, _passwordTextController.text);
+    // _fetchTokens(_userNameTextController.text, _passwordTextController.text);
     // _fetchTokens('user@test.com', 'password');
+
+    await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ProductScreen()),
+    );
+    model.loadTokens(
+        _userNameTextController.text, _passwordTextController.text);
   }
 }
 
-final url = 'https://node-mongo-jwt-api.herokuapp.com/signin';
-// final url = 'http://localhost:3000/signin';
+// final url = 'https://node-mongo-jwt-api.herokuapp.com/signin';
+// // final url = 'http://localhost:3000/signin';
 
-Future<Token> _fetchTokens(String email, String password) async {
-  final http.Response response = await http.post(
-    url,
-    headers: <String, String>{
-      'Content-Type': 'application/json; charset=UTF-8',
-    },
-    body: jsonEncode(<String, String>{'email': email, 'password': password}),
-  );
-  if (response.statusCode == 201) {
-    // print(response.body);
-    final tokens = Token.fromJson(jsonDecode(response.body));
-    return tokens;
-  } else {
-    print(response.body);
-    // throw Exception('Failed auth');
-    return null;
-  }
-}
-
-// Future<Token> _getProducts() async {
+// Future<Token> _fetchTokens(String email, String password) async {
 //   final http.Response response = await http.post(
-//     'https://node-mongo-jwt-api.herokuapp.com/products',
+//     url,
 //     headers: <String, String>{
 //       'Content-Type': 'application/json; charset=UTF-8',
 //     },
-//     body: jsonEncode(<String, String>{
-//       "email": email,
-//       "password": password,
-//     }),
+//     body: jsonEncode(<String, String>{'email': email, 'password': password}),
 //   );
 //   if (response.statusCode == 201) {
-//     print(response.body);
-//     return Token.fromJson(jsonDecode(response.body));
+//     // print(response.body);
+//     final tokens = Token.fromJson(jsonDecode(response.body));
+//     return tokens;
 //   } else {
-//     throw Exception('Failed auth');
+//     print(response.body);
+//     // throw Exception('Failed auth');
+//     return null;
 //   }
 // }

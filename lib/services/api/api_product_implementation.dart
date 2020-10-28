@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_api/logic/models/product.dart';
-import 'api_products.dart';
+import 'api_product.dart';
 
-class ApiProductsImpl implements ApiProducts {
+class ApiProductImpl implements ApiProduct {
   final _host = 'node-mongo-jwt-api.herokuapp.com';
   final _path = 'products';
   final Map<String, String> _headers = {'Authorization': 'Bearer AccessToken'};
