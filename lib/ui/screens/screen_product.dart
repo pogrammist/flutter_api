@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_api/logic/view_models/viewmodel_product.dart';
 import 'package:provider/provider.dart';
 
-class ProductScreen extends StatefulWidget {
+class ScreenProduct extends StatefulWidget {
   @override
-  _ProductScreenState createState() => _ProductScreenState();
+  _ScreenProductState createState() => _ScreenProductState();
 }
 
-class _ProductScreenState extends State<ProductScreen> {
+class _ScreenProductState extends State<ScreenProduct> {
   ProductViewModel model = ProductViewModel();
 
   @override

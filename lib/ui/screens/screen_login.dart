@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_api/logic/view_models/viewmodel_token.dart';
-import 'package:flutter_api/ui/screens/products.dart';
+import 'package:flutter_api/ui/screens/screen_product.dart';
 
-class LoginScreen extends StatefulWidget {
+class ScreenLogin extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _ScreenLoginState createState() => _ScreenLoginState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _ScreenLoginState extends State<ScreenLogin> {
   final TokenViewModel model = TokenViewModel();
   final _userNameTextController = TextEditingController();
   final _passwordTextController = TextEditingController();
@@ -99,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     await Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ProductScreen()),
+      MaterialPageRoute(builder: (context) => ScreenLogin()),
     );
     model.loadTokens(
         _userNameTextController.text, _passwordTextController.text);

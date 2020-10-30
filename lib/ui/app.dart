@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_api/logic/view_models/viewmodel_token.dart';
-import 'package:flutter_api/ui/screens/login.dart';
-import 'package:flutter_api/ui/screens/products.dart';
+import 'package:flutter_api/ui/screens/screen_login.dart';
 import 'package:provider/provider.dart';
 
 import 'common/theme.dart';
@@ -16,7 +15,6 @@ class _AppState extends State<App> {
 
   @override
   void initState() {
-    // model.removeTokens();
     super.initState();
   }
 
@@ -29,7 +27,7 @@ class _AppState extends State<App> {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Api',
           theme: appTheme,
-          home: LoginScreen(),
+          home: ScreenLogin(),
           // initialRoute: '/',
           // routes: {
           //   '/': (context) => LoginScreen(),
